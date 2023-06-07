@@ -19,9 +19,6 @@ async function getCity(url){
     }
 }
 
-function weatherApi(cityName){
-    return `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&APPID=${API_KEY}&units=metric`
-}
 
 function cityInfo(city){
     var city_name = cities[city_index]
@@ -35,7 +32,7 @@ function cityInfo(city){
 function slideShow(){
     setInterval(() => {
         if( city_index < cities.length){
-            const city_data = weatherApi(cities[city_index])
+            const city_data = `https://api.openweathermap.org/data/2.5/weather?q=${cities[city_index]}&APPID=${API_KEY}&units=metric`
             getCity(city_data)
         } else if( city_index === cities.length){
             city_index = 0
